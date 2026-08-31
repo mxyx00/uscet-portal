@@ -1,4 +1,26 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 export default function Dashboard() {
+  const [apiMessage, setApiMessage] = useState("Connecting to API...");
+  useEffect(() => {
+  fetch("http://localhost:5091/api/hello")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+
+      return response.json();
+    })
+    .then((data) => {
+      setApiMessage(data.message);
+    })
+    .catch((error) => {
+      console.log("API request failed:", error);
+      setApiMessage("Unable to connect to API");
+    });
+}, []);
   return (
     <main className="dashboardPage">
       <header className="dashboardHeader">
@@ -15,6 +37,10 @@ export default function Dashboard() {
         <p className="dashboardIntro">
           Access team information, events, announcements, and resources.
         </p>
+
+      <div className="apiStatus">
+         <strong>API Status:</strong> {apiMessage}
+      </div>
 
         <div className="dashboardGrid">
           <div className="dashboardCard">
