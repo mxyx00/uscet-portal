@@ -34,6 +34,35 @@ export default function MembersPage() {
       });
   }, []);
 
+async function handleDelete(id: number) {
+  const confirmed = window.confirm(
+    "Are you sure you want to remove this member?"
+  );
+
+  if (!confirmed) {
+    return;
+  }
+
+  try {
+    const response = await fetch(
+      `http://localhost:5091/api/members/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`HTTP error: ${response.status}`);
+    }
+
+    setMembers((currentMembers) =>
+      currentMembers.filter((member) => member.id !== id)
+    );
+  } catch (error) {
+    console.log("Unable to delete member:", error);
+  }
+}
+
   return (
     <main className="membersPage">
       <header className="dashboardHeader">
@@ -59,21 +88,43 @@ export default function MembersPage() {
         ) : (
           <div className="memberList">
             {members.map((member) => (
-              <div className="memberCard" key={member.id}>
-                <div>
-                  <h3>
-                    {member.firstName} {member.lastName}
-                  </h3>
+             
+             <div className="memberCard" key={member.id}>
+              <div className="memberInfo">
+                <h3>
+                  {member.firstName} {member.lastName}
+                </h3>
 
-                  <p>{member.position}</p>
-                </div>
-
-                <span>Class of {member.year}</span>
+                <p>{member.position}</p>
               </div>
+
+              <div className="memberRight">
+                <span>Class of {member.year}</span>
+
+                <div className="memberActions">
+                  <Link
+                    href={`/members/${member.id}/edit`}
+                    className="editMemberButton"
+                  >
+                    Edit
+                  </Link>
+
+                  <button
+                    className="deleteMemberButton"
+                    onClick={() => handleDelete(member.id)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+
             ))}
           </div>
         )}
       </div>
+
+
     </main>
   );
 }

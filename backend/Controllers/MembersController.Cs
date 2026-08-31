@@ -44,5 +44,60 @@ namespace backend.Controllers
 
             return Created($"/api/members/{member.Id}", member);
         }
+
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Member>> GetMember(int id)
+        {
+            var member = await _context.Members.FindAsync(id);
+
+            if (member == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(member);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateMember(
+            int id,
+            UpdateMemberRequest request)
+        {
+            var member = await _context.Members.FindAsync(id);
+
+            if (member == null)
+            {
+                return NotFound();
+            }
+
+            member.FirstName = request.FirstName;
+            member.LastName = request.LastName;
+            member.Position = request.Position;
+            member.Year = request.Year;
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteMember(int id)
+        {
+            var member = await _context.Members.FindAsync(id);
+
+            if (member == null)
+            {
+                return NotFound();
+            }
+
+            _context.Members.Remove(member);
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
     }
 }

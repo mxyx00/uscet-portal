@@ -345,3 +345,42 @@ p {
   text-decoration: none;
   font-weight: bold;
 }
+
+.memberRight {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.memberActions {
+  display: flex;
+  gap: 8px;
+}
+
+.editMemberButton {
+  background-color: #990000;
+  color: white;
+
+  padding: 8px 14px;
+  border-radius: 5px;
+
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.deleteMemberButton {
+  background-color: white;
+  color: #990000;
+
+  padding: 8px 14px;
+
+  border: 1px solid #990000;
+  border-radius: 5px;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+
+  cursor: pointer;
+}
