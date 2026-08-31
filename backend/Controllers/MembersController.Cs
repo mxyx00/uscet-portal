@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using backend.Data;
 using backend.Models;
 
 namespace backend.Controllers
@@ -7,48 +9,19 @@ namespace backend.Controllers
     [Route("api/[controller]")]
     public class MembersController : ControllerBase
     {
-        [HttpGet]
-        public IActionResult GetMembers()
+        private readonly AppDbContext _context;
+
+        public MembersController(AppDbContext context)
         {
-            var members = new List<Member>
-            {
-                new Member
-                {
-                    Id = 1,
-                    FirstName = "Maya",
-                    LastName = "Shvab",
-                    Position = "President",
-                    Year = 2026
-                },
+            _context = context;
+        }
 
-                new Member
-                {
-                    Id = 2,
-                    FirstName = "Laura",
-                    LastName = "Jun",
-                    Position = "Member",
-                    Year = 2030
-                },
-
-                new Member
-                {
-                    Id = 3,
-                    FirstName = "Adison",
-                    LastName = "Gurley",
-                    Position = "Merch Chair",
-                    Year = 2028
-                },
-
-                new Member
-                {
-                    Id = 4,
-                    FirstName = "Isabel",
-                    LastName = "Ketterson",
-                    Position = "Treasurer",
-                    Year = 2028
-                }
-        
-            };
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Member>>> GetMembers()
+        {
+            var members = await _context.Members
+                .AsNoTracking()
+                .ToListAsync();
 
             return Ok(members);
         }
