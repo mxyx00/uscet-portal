@@ -25,5 +25,24 @@ namespace backend.Controllers
 
             return Ok(members);
         }
+
+        [HttpPost]
+        public async Task<ActionResult<Member>> CreateMember(
+            CreateMemberRequest request)
+        {
+            var member = new Member
+            {
+                FirstName = request.FirstName,
+                LastName = request.LastName,
+                Position = request.Position,
+                Year = request.Year
+            };
+
+            _context.Members.Add(member);
+
+            await _context.SaveChangesAsync();
+
+            return Created($"/api/members/{member.Id}", member);
+        }
     }
 }

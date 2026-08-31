@@ -50,6 +50,10 @@ export default function MembersPage() {
           USC Equestrian team directory
         </p>
 
+      <Link href="/members/add" className="addMemberLink">
+         Add Member
+      </Link>
+
         {loading ? (
           <p>Loading members...</p>
         ) : (
