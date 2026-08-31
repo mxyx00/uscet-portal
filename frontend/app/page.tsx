@@ -1,12 +1,13 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <main>
       <Image
-        src="/usc-equestrian-logo.png"
+        src="/logo.png"
         alt="USC Equestrian logo"
-        width={220}
+        width={360}
         height={220}
         className="logo"
       />
@@ -14,7 +15,9 @@ export default function Home() {
       <h1>USC Equestrian</h1>
       <p>Team Member Portal</p>
 
-      <button>Sign In</button>
+      <Link href="/dashboard" className="signInButton">
+       Sign In
+      </Link>
     </main>
   );
 }

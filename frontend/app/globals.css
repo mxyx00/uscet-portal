@@ -25,6 +25,11 @@ main {
   text-align: center;
 }
 
+.logo {
+  object-fit: contain;
+  margin-bottom: 24px;
+}
+
 h1 {
   font-size: 48px;
   margin: 0 0 8px 0;
@@ -35,17 +40,123 @@ p {
   margin: 0 0 24px 0;
 }
 
-button {
+.signInButton {
+  display: block;
+
+  width: 20%;
+
   background-color: #990000;
   color: white;
 
   border: none;
   border-radius: 6px;
 
-  padding: 12px 28px;
+  padding: 14px 20px;
 
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
+  font-weight: bold;
+
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.dashboardPage {
+  min-height: 100vh;
+  background-color: white;
+  color: #222222;
+}
+
+.dashboardHeader {
+  height: 72px;
+
+  background-color: #990000;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 40px;
+}
+
+.dashboardTitle {
+  color: white;
+  font-size: 24px;
+  margin: 0;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  font-size: 14px;
+}
+
+.logoutButton {
+  background-color: white;
+  color: #990000;
+
+  border: none;
+  border-radius: 5px;
+
+  padding: 9px 16px;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
 
   cursor: pointer;
+}
+
+.dashboardContent {
+  max-width: 1100px;
+
+  margin: 0 auto;
+  padding: 60px 40px;
+}
+
+.dashboardContent h2 {
+  color: #990000;
+  font-size: 32px;
+
+  margin: 0 0 8px 0;
+}
+
+.dashboardIntro {
+  color: #666666;
+  margin-bottom: 40px;
+}
+
+.dashboardGrid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 24px;
+}
+
+.dashboardCard {
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+
+  padding: 28px;
+
+  background-color: white;
+}
+
+.dashboardCard h3 {
+  color: #990000;
+
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.dashboardCard p {
+  color: #555555;
+
+  font-size: 15px;
+  line-height: 1.5;
+
+  margin: 0;
 }
