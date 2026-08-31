@@ -170,3 +170,84 @@ p {
 
   font-size: 14px;
 }
+
+.dashboardCard {
+  text-decoration: none;
+}
+
+.membersPage {
+  min-height: 100vh;
+  background-color: white;
+  color: #222222;
+}
+
+.membersContent {
+  max-width: 1100 px;
+  width: 40%;
+  margin: 0 auto;
+  padding: 60px 40px;
+}
+
+.membersContent h2 {
+  color: #990000;
+  font-size: 32px;
+  margin: 0;
+}
+
+.membersIntro {
+  color: #666666;
+  margin-top: 8px;
+  margin-bottom: 36px;
+}
+
+.memberList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.memberCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 22px 24px;
+
+  gap: 24px;
+
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+}
+
+.memberCard h3 {
+  color: #990000;
+  margin: 0 0 6px 0;
+}
+
+.memberCard p {
+  color: #555555;
+  margin: 0;
+}
+
+.memberCard span {
+  color: #666666;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.backButton {
+  background-color: white;
+  color: #990000;
+
+  padding: 9px 16px;
+
+  border-radius: 5px;
+
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.memberCard > div {
+  text-align: left;
+}

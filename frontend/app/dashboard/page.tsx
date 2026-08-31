@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Dashboard() {
@@ -43,10 +44,11 @@ export default function Dashboard() {
       </div>
 
         <div className="dashboardGrid">
-          <div className="dashboardCard">
+
+          <Link href="/members" className="dashboardCard">
             <h3>Team Members</h3>
             <p>View the USC Equestrian team directory.</p>
-          </div>
+          </Link>
 
           <div className="dashboardCard">
             <h3>Calendar</h3>
