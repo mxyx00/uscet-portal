@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Dashboard() {
   const [apiMessage, setApiMessage] = useState("Connecting to API...");
+  const router = useRouter();
   useEffect(() => {
   fetch("http://localhost:5091/api/hello")
     .then((response) => {
@@ -22,6 +24,39 @@ export default function Dashboard() {
       setApiMessage("Unable to connect to API");
     });
 }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:5091/api/auth/me", {
+      credentials: "include",
+    })
+      .then((response) => {
+        if (response.status === 401) {
+          router.push("/");
+        }
+      })
+      .catch((error) => {
+        console.log("Authentication check failed:", error);
+        router.push("/");
+      });
+  }, [router]);
+
+  async function handleLogout() {
+    try {
+      const response = await fetch("http://localhost:5091/auth/logout", {
+        method: "POST",
+        credentials: "include",
+      });
+
+      if (!response.ok) {
+        throw new Error(`Logout failed: ${response.status}`);
+      }
+
+      router.push("/");
+    } catch (error) {
+      console.log("Logout failed:", error);
+    }
+  }
+
   return (
     <main className="dashboardPage">
       <header className="dashboardHeader">
@@ -29,7 +64,9 @@ export default function Dashboard() {
 
         <div className="userInfo">
           <span>Team Member</span>
-          <button className="logoutButton">Sign Out</button>
+          <button className="logoutButton" onClick={handleLogout}>
+          Sign Out
+          </button>
         </div>
       </header>
 
@@ -55,10 +92,10 @@ export default function Dashboard() {
             <p>View upcoming practices, lessons, meetings, and competitions.</p>
           </div>
 
-          <div className="dashboardCard">
-            <h3>Announcements</h3>
-            <p>Keep up with important team updates.</p>
-          </div>
+          <Link href="/announcements" className="dashboardCard">
+          <h3>Announcements</h3>
+          <p>Keep up with important team updates.</p>
+        </Link>
 
           <div className="dashboardCard">
             <h3>Team Resources</h3>

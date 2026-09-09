@@ -11,7 +11,7 @@ namespace backend.Controllers
         {
             return Ok(new
             {
-                message = "Hello from the USC Equestrian API"
+                message = "Website is Currently Live"
             });
         }
     }

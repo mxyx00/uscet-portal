@@ -18,7 +18,9 @@ export default function EditMemberPage() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5091/api/members/${id}`)
+    fetch(`http://localhost:5091/api/members/${id}`, {
+      credentials: "include",
+    })
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error: ${response.status}`);
@@ -51,6 +53,7 @@ export default function EditMemberPage() {
         `http://localhost:5091/api/members/${id}`,
         {
           method: "PUT",
+          credentials: "include",
 
           headers: {
             "Content-Type": "application/json",

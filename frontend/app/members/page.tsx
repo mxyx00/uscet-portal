@@ -16,7 +16,9 @@ export default function MembersPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5091/api/members")
+    fetch("http://localhost:5091/api/members", {
+      credentials: "include",
+    })
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error: ${response.status}`);
@@ -48,6 +50,7 @@ async function handleDelete(id: number) {
       `http://localhost:5091/api/members/${id}`,
       {
         method: "DELETE",
+        credentials: "include",
       }
     );
 

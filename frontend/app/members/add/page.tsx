@@ -21,6 +21,7 @@ export default function AddMemberPage() {
     try {
       const response = await fetch("http://localhost:5091/api/members", {
         method: "POST",
+        credentials: "include",
 
         headers: {
           "Content-Type": "application/json",
