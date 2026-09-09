@@ -16,7 +16,7 @@ export default function Home() {
       <p>Team Member Portal</p>
 
       <Link href="/dashboard" className="signInButton">
-       Sign In
+        Sign In
       </Link>
     </main>
   );
