@@ -160,10 +160,11 @@ function getWeatherDescription(code: number) {
           <p>Keep up with important team updates.</p>
         </Link>
 
-          <div className="dashboardCard">
+         <Link href="/resources" className="dashboardCard">
+
             <h3>Team Resources</h3>
             <p>Access documents and other member resources.</p>
-          </div>
+          </Link>
         </div>
       </div>
     </main>

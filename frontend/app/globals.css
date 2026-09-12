@@ -546,3 +546,71 @@ p {
   font-size: 24px !important;
   font-weight: bold;
 }
+
+.resourcesHeader {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+
+  height: auto;
+  padding: 28px 40px;
+  border-radius: 12px;
+}
+
+.resourcesHeader .dashboardTitle {
+  margin: 0;
+}
+
+.resourcesHeader .backButton {
+  width: auto;
+  padding: 8px 16px;
+  margin: 0;
+
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.resourcesContent {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.resourcesIntro {
+  margin-bottom: 30px;
+}
+
+.resourcesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.resourceCard {
+  padding: 24px;
+
+  background-color: #eeeeee;
+  border-radius: 12px;
+}
+
+.resourceCard h3 {
+  margin-top: 0;
+}
+
+.resourceCard p {
+  line-height: 1.6;
+}
+
+.resourceLink {
+  display: inline-block;
+  margin-top: 12px;
+
+  color: #990000;
+  font-style: italic;
+  text-decoration: none;
+}
+
+.resourceLink:hover {
+  text-decoration: underline;
+}
